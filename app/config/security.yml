@@ -1,0 +1,56 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        database:
+            entity:
+                class: AppBundle:CorrectUserDatabase
+                property: username
+        #in_memory:
+            #memory:
+                #users:
+                    #mindaugas: 
+                        #password: mindaugas
+                        #roles: 'ROLE_USER'
+                    #admin: 
+                        #password: admin
+                        #roles: 'ROLE_ADMIN'
+
+    firewalls:
+        #main: 
+            #pattern: ^/
+            #http_basic: ~
+            #provider: database
+            #form_login: 
+                #login_path: /
+                #check_path: /
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev: 
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        
+        # pries tai buvo main, bet kiek suprantu cia tik pavadinimas (gali buti bet kas)
+        default: 
+            anonymous: ~
+            # activate different ways to authenticate
+
+            http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            #form_login: 
+                #login_path: /
+                #check_path: /
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        #secured_area: 
+            #logout: 
+                #path: /logout
+                #target: /
+    encoders:
+        AppBundle\Entity\CorrectUserDatabase: 
+            algorithm: bcrypt
+        #Symfony\Component\Security\Core\User\User: plaintext
+    #access_control: 
+        # require ROLE_ADMIN for /admin*
+        #- { path: ^/home, roles: ROLE_ADMIN }

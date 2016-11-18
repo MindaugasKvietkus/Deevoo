@@ -1,0 +1,19 @@
+AppBundle\Entity\Login: 
+  type: entity
+  table: username
+  id: 
+    id: 
+      type: integer
+      id: True
+      generator:
+        strategy: AUTO
+  fields:
+    username:
+      type: string
+      length: 50
+      column: username
+      unique: true
+    password: 
+      type: string
+      length: 50
+      column: password

@@ -1,0 +1,23 @@
+AppBundle\Entity\ProjectVariables: 
+  type: entity
+  table: project
+  oneToMany: 
+    file_info: 
+      targetEntity: ImagesVariables
+      mappedBy: project_id
+      cascade: [persist, remove]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+     project_name:
+      type: string
+      length: 100
+      column: project_name
+     disable:
+      type: integer
+      length: 1
+      nullable: TRUE  
+      column: disable

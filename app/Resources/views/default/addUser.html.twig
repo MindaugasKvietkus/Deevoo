@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+{{ form_start(form, {'class': 'form-inline'}) }}
+<div class="col-md-6">
+	<div class="form-group">
+	<label class="col-md-3">{{ form_label(form.username) }}</label>
+	<label class="col-md-9">{{ form_widget(form.username) }}</label>
+	</div>
+	<div class="form-group">
+	<label class="col-md-3">{{ form_label(form.password) }}</label>
+	<label class="col-md-9">{{ form_widget(form.password) }}</label>
+	</div>
+	<div class="form-group">
+	<label class="col-md-3">{{ form_label(form.role) }}</label>
+	<label class="col-md-9">{{ form_widget(form.role) }}</label>
+	</div>
+	<div>
+	<label">{{ form_widget(form.add) }}</label>
+	</div>
+<div style="display: none;">
+{{ form_rest(form) }}
+</div>
+{% endblock %}

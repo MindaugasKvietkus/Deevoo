@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+{{ form_start(form, {'class': 'form-inline'}) }}
+<div class="col-md-12">
+	<div class="form-group">
+	<label class="col-md-2">{{ form_label(form.project_name) }}</label>
+	<label class="col-md-10">{{ form_widget(form.project_name) }}</label>
+	</div>
+	<div class="col-md-12">
+	<div class="form-group">
+	<label class="col-md-6">{{ form_label(form.images_path) }}</label>
+	<label class="col-md-4">{{ form_label(form.images_name) }}</label>
+	<label class="col-md-1">{{ form_label(form.images_id) }}</label>
+	<label class="col-md-1">Action</label>
+
+	<label class="col-md-6">{{ form_widget(form.images_path) }}</label>
+	<label class="col-md-4">{{ form_widget(form.images_name) }}</label>
+	<label class="col-md-1">{{ form_widget(form.images_id) }}</label>
+	{% for value in id %}
+		<label class="col-md-1"><a class="btn btn-default" href="/delete_images/{{ value }}">
+				{{ form_label(form.delete) }}</a></label>
+	{% endfor %}
+
+		<!-- <label class="col-md-1"><a class="btn btn-default" href="" role="button">Delete</a></label> -->
+	</div>
+	</div>
+	<div class="col-md-12">
+	<label>{{ form_widget(form.add_file) }}</label>
+		<label><a href="/add_images/{{ project_id }}">{{	form_widget(form.add) }}</a></label>
+	<label><a href="/images_update/{{ project_id }}"/>{{ form_widget(form.update) }}</a></label>
+	</div>
+<div style="display: none;">
+{{ form_rest(form) }}
+</div>
+	{{ form_end(form) }}
+
+{% endblock %}

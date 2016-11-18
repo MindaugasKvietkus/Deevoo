@@ -1,0 +1,28 @@
+AppBundle\Entity\ImagesVariables:
+  type: entity
+  table: images
+  id: 
+    id:
+      type: integer
+      id: TRUE
+      generator:
+        strategy: AUTO
+  fields:
+    images_name: 
+      type: string
+      length: 50
+      column: images_name
+    images_path: 
+      type: string
+      length: 100
+      column: images_path
+      
+  manyToOne:
+    project_id:
+      targetEntity: ProjectVariables
+      inversedBy: file_info
+      joinColumn:
+        name: project_id
+        referencedColumnName: id
+        onDelete: CASCADE
+    

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ dump(project) }}
+<!-- {{ dump(images) }} -->
+<!-- {{ dump(count) }} -->
+
+<div class="col-md-12">
+	<div class="col-md-12">
+		<div>
+			<label>
+				<ul class="pagination">
+					<li><a href="#" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					{% for number in count %}
+					<li><a href="{{ path('projectView', {page: number, id: project.id}) }}">{{ number }}</a></li>
+					{% endfor %}
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+					
+				</ul>
+					<h2>
+						{{ project.project_name }}
+					</h2>
+			</label>
+		</div>
+	</div>
+	{% for value in images %}
+	<div class="thumbnail col-md-12">
+		<img src="/uploaded_images/101/{{ value.images_name }}"alt="{{ value.images_name }}" class="img-rounded">
+		<div class="caption">
+		</div>
+
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<script>
+function Delete() {
+    document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+<div>
+<a class="btn btn-default" href={{ path('addproject') }} role="button">Add Project</a>
+<p id="demo"></p>
+</div>
+<div>
+<br>
+<br>
+<br>
+<br>
+<table class="table table-hover table-bordered">
+<tr>
+<th>Projects</th>
+<th>Action</th>
+</tr>
+{% for value in projects %}
+<tr>
+<td  class="col-md-9">{{ value.project_name }}</td>
+{% if value.disable == 0 %}
+<td style="text-align: right;"  class="col-md-2">
+<a href="/view/{{ value.id }}">View</a> 
+<a href="/delete/{{ value.id }}" onclick="Delete">Delete</a> 
+<a href="/edit/{{ value.id }}">Edit</a> 
+<a href="/disable/{{ value.id }}">Disable</a> 
+<a href="/send/{{ value.id }}">Send</a> 
+<a href="/test/{{ value.id }}">Test</a></td> 
+{% else %}
+<td style="text-align: right;"  class="col-md-2"><a href="/enable/{{ value.id }}">Enable</a></td> 
+{% endif %}
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
